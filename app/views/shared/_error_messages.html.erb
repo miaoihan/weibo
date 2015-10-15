@@ -1,12 +1,19 @@
 <% if @user.errors.any? %>
-<div id="error_explanation">
+  <div id="error_explanation">
 	<div class="alert alert-danger">
-		The form contains
-		<%= pluralize(@user.errors.count, "error") %>.</div>
+		<% c = @user.errors.count %>
+		<% if c >= 5%>
+			<p><strong>咱还能一起好好地玩耍么..！</strong></p>
+		<% elsif c <5 and c >= 3 %>
+			<p><strong>兄台别闹！出现了<%= c %>个问题！</strong></p>
+		<% else%>
+			<p><strong>报告长官！发现了<%= c %>个问题</strong></p>
+		<% end %>
+		
+	</div>
 	<ul>
 		<% @user.errors.full_messages.each do |msg| %>
-		<li>
-			<%= msg %></li>
+			<li><%= msg %></li>
 		<% end %></ul>
-</div>
+  </div>
 <% end %>
