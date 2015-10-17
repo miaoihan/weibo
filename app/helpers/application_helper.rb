@@ -6,7 +6,7 @@ module ApplicationHelper
 			base_title 							#隐式返回值
 		#	return base_title 	可省略return		
 		else
-			page_title + '|' + base_title			#字符串拼接
+			page_title + ' - ' + base_title			#字符串拼接
 		end
 	end
 end

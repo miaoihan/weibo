@@ -12,7 +12,12 @@ gem 'sdoc', 						'~> 0.4.0', group: :doc
 
 gem 'bootstrap-sass',			'3.2.0.0'
 #哈希密码摘要
-gem 'bcrypt',					'3.1.7'	    
+gem 'bcrypt',					'3.1.7'
+#模拟用户名
+gem 'faker',					'1.4.2'	   
+#分页
+gem 'will_paginate'
+gem 'bootstrap-will_paginate' 
 
 group :development, :test do
   gem 'byebug'

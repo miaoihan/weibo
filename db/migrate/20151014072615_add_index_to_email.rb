@@ -1,6 +1,5 @@
 class AddIndexToEmail < ActiveRecord::Migration
   def change
-  	#确保数据库邮箱唯一性
-  	add_index :users, :email, unique: true
+  	add_index :users, :email, unique: true	# => 确保数据库邮箱唯一性
   end
 end

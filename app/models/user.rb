@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   				     format: { with: VALID_EMAIL_REGEX },
   				     uniqueness: { case_sensitive: false }		#唯一性验证,不区分大小，自动指定 uniquenes:  true 
   has_secure_password									    	#哈希加密
-  validates :password, presence: true,  length: { minimum: 6 }
+  validates :password, presence: true,  length: { minimum: 6 },  allow_nil: true
 
   # 返回指定字符串的哈希摘要
   def User.digest(string)
