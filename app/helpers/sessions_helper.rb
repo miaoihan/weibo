@@ -4,7 +4,7 @@ module SessionsHelper
   def log_in(user)
   	session[:user_id] = user.id
   end
-  
+
   # 在持久会话中记住用户
   def remember(user)
   	user.remember
@@ -34,7 +34,7 @@ module SessionsHelper
   def logged_in?
   	!current_user.nil?
   end
-  
+
   # 忘记持久会话
   def forget(user)
   	user.forget
@@ -59,6 +59,5 @@ module SessionsHelper
   def store_location
   	session[ :forwarding_url ] = request.url if request.get?
   end
-  
 
 end

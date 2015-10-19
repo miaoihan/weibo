@@ -1,7 +1,7 @@
-<% if @user.errors.any? %>
+<% if object.errors.any? %>
   <div id="error_explanation">
 	<div class="alert alert-danger">
-		<% c = @user.errors.count %>
+		<% c = object.errors.count %>
 		<% if c >= 5%>
 			<p><strong>咱还能一起好好地玩耍么..！</strong></p>
 		<% elsif c <5 and c >= 3 %>
@@ -12,7 +12,7 @@
 		
 	</div>
 	<ul>
-		<% @user.errors.full_messages.each do |msg| %>
+		<% object.errors.full_messages.each do |msg| %>
 			<li><%= msg %></li>
 		<% end %></ul>
   </div>

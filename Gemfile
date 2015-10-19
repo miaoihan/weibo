@@ -1,7 +1,7 @@
 source 'https://ruby.taobao.org/'
 
 gem 'rails', 						'4.2.4'
-gem 'sqlite3'
+
 gem 'sass-rails', 				'~> 5.0'
 gem 'uglifier',					'>= 1.3.0'
 gem 'coffee-rails',				'~> 4.1.0'
@@ -18,6 +18,10 @@ gem 'faker',					'1.4.2'
 #分页
 gem 'will_paginate'
 gem 'bootstrap-will_paginate' 
+#图片上传、处理
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
 
 group :development, :test do
   gem 'byebug'
@@ -25,7 +29,14 @@ end
 
 group :development do
   gem 'web-console', 			'~> 2.0'
-
+  gem 'byebug'
+  gem 'sqlite3'
   gem 'spring'
+
+ group :production do
+   gem 'pg'
+   gem 'rails_12factor'
+end
+
 end
 

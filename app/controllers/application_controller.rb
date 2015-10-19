@@ -9,4 +9,15 @@ class ApplicationController < ActionController::Base
     def set_locale 
       I18n.locale = params[:locale] || I18n.default_locale 
     end 
+
+  private
+  #确保用户已登录  
+    def logged_in_user
+      unless logged_in?
+        store_location
+        flash[ :danger] = "登录后才可查看哦！"
+        redirect_to login_url
+      end
+    end
+
 end

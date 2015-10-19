@@ -1,18 +1,19 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [ :index, :edit, :update, :destroy]  #只有登陆后才可以操作
-  before_action :correct_user,     only: [ :edit, :update]   #自己修改自己的
-  before_action :admin_user,      only: :destroy                #只让管理员删除用户
+  before_action :correct_user,     only: [ :edit, :update]                               #自己修改自己的
+  before_action :admin_user,      only: :destroy                                            #只让管理员删除用户
 
   def  index
     @users = User.paginate(page: params[ :page], per_page: 20)
   end
 
   def new
-  	@user = User.new
+    @user = User.new
   end
 
   def show
-  	@user = User.find(params[ :id ])
+    @user = User.find(params[ :id ])
+    @microposts = @user.microposts.paginate(page: params[:page], per_page: 20)
   #debugger
   end
 	
@@ -35,7 +36,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id ])
     if @user.update_attributes(user_params)
-      flash[:success] = "修改成功"
+      flash[:success] = "修改成功！"
       redirect_to @user
    else
       render 'edit'
@@ -44,7 +45,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[ :id ]).destroy
-    flash[ :success ] = "删除成功"
+    flash[ :success ] = "删除成功！"
     redirect_to users_url
   end
 
@@ -55,15 +56,6 @@ class UsersController < ApplicationController
     end
 
 #事前过滤器：
-
-  #确保用户已登录  
-  def logged_in_user
-    unless logged_in?
-      store_location
-      flash[ :danger] = "登录后才可查看哦"
-      redirect_to login_url
-    end
-  end
   
   #确保是当前用户
   def correct_user
