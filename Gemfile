@@ -29,7 +29,6 @@ end
 
 group :development do
   gem 'web-console', 			'~> 2.0'
-  gem 'byebug'
   gem 'sqlite3'
   gem 'spring'
 
