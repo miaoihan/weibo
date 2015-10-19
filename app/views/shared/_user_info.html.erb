@@ -1,0 +1,7 @@
+<%= link_to gravatar_for(current_user, size: 50), current_user %>
+<h1>
+	<%= current_user.name %></h1>
+<span>
+	<%= link_to "我的主页", current_user %></span>
+<span>
+	<%= current_user.microposts.count %>条微博</span>
