@@ -105,7 +105,7 @@ zh:
     format: "%{attribute}%{message}"
     messages:
       accepted: 必须是可被接受的
-      blank: 不能为空
+      blank: 不能为空字符
       present: 必须是空白
       confirmation: 与确认值不匹配
       empty: 不能留空
