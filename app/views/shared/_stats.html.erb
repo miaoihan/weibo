@@ -2,10 +2,20 @@
 <div class="stats">
 	<a href="<%= following_user_path(@user) %>
 		"> <strong id="following" class="stat"><%= @user.following.count %></strong>
-		我关注的人
+		<% if current_user?(@user) %>
+			我关注的人
+		<% else %>
+			TA关注的人
+		<% end %>
+		
 	</a>
 	<a href="<%= followers_user_path(@user) %>
 		"> <strong id="followers" class="stat"><%= @user.followers.count %></strong>
-		关注我的人
+		<% if current_user?(@user) %>
+			关注我的人
+		<% else %>
+			关注TA的人
+		<% end %>
 	</a>
 </div>
+<%= render 'users/follow_form' if logged_in? %>
