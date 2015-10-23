@@ -1,5 +1,13 @@
 class User < ActiveRecord::Base	
   has_many :microposts, dependent: :destroy
+  has_many :active_relationships, class_name: "Relationship",                          #主动关系映射
+                                                           foreign_key: "follower_id",
+                                                           dependent: :destroy
+  has_many :passive_relationships, class_name: "Relationship",                       #被动关系映射
+                                                           foreign_key: "followed_id",
+                                                           dependent: :destroy                                                       
+  has_many :following, through: :active_relationships, source: :followed         #  我关注的人              
+  has_many :followers, through: :passive_relationships, source: :follower       #  关注我的人                 
   attr_accessor :remember_token                                                                           #  记忆令牌
   before_save { self.email = email.downcase}				                            #将 email 转换为小写,确保邮件地址唯一
   validates :name, presence: true,  length: { maximum: 50, minimum: 4 }	#存在性、不为空，长度限制
@@ -13,6 +21,21 @@ class User < ActiveRecord::Base
   # 实现动态流原型
   def feed
     Micropost.where("user_id = ?", id)
+  end
+
+  # 关注另一个用户
+  def follow(other_user)
+    active_relationships.create(followed_id: other_user.id)
+  end
+
+  # 取消关注另一个用户
+  def unfollow(other_user)
+    active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  # 如果当前用户关注了指定的用户,返回 true
+  def following?(other_user)
+    following.include?(other_user)
   end
 
   # 返回指定字符串的哈希摘要

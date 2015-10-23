@@ -1,0 +1,9 @@
+<% unless current_user?(@user) %>
+	<div id="follow_form">
+		<% if current_user.following?(@user) %> 	<!--  Ajax请求 如果已关注，显示 取消关注 -->
+			<%= render 'unfollow' %>
+		<% else %> 								<!--  Ajax请求 如果未关注，显示 关注 -->
+			<%= render 'follow' %>
+		<% end %>
+	</div>
+<% end %>

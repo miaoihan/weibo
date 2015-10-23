@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [ :index, :edit, :update, :destroy]  #只有登陆后才可以操作
+  before_action :logged_in_user, only: [ :index, :edit, :update, :destroy,
+                                                                    :following, :followers]  #只有登陆后才可以操作
   before_action :correct_user,     only: [ :edit, :update]                               #自己修改自己的
   before_action :admin_user,      only: :destroy                                            #只让管理员删除用户
 
@@ -49,7 +50,22 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def following
+    @title = "我关注的人"
+    @user = User.find(params[:id])
+    @users = @user.following.paginate(page: params[:page])
+    render 'show_follow'
+end
+
+def followers
+    @title = "关注我的人"
+    @user = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
+end
+
   private
+  
     def user_params
     	params.require( :user ).permit( :name, :email, :password, 
   									:password_confirmation)

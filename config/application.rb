@@ -18,12 +18,15 @@ module SampleApp
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '*.{rb,yml}').to_s]
-    config.i18n.default_locale = :zh
+    config.i18n.default_locale = "zh-CN"
     config.encoding = 'utf-8'
     config.serve_static_assets = true
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # 在处理 Ajax 的表单中添加真伪令牌
+    config.action_view.embed_authenticity_token_in_remote_forms = true
   end
 end
 
