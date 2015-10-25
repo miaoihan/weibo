@@ -20,7 +20,11 @@ class User < ActiveRecord::Base
   
   # 实现动态流原型
   def feed
-    Micropost.where("user_id = ?", id)
+    #Micropost.where("user_id IN (?) OR user_id = ?", following_ids, id)
+    #下面啥SQL子查询，优化搜索性能
+    following_ids = "SELECT followed_id FROM relationships
+                                WHERE follower_id = :user_id"
+    Micropost.where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: id)
   end
 
   # 关注另一个用户
