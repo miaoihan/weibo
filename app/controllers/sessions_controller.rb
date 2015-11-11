@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
   
   # 登录
   def create
+    # sleep 2000
   	@user = User.find_by(email: params[ :session ][ :email] .downcase)
   	if @user && @user.authenticate(params[ :session ][ :password ])# 除了 nil 和 false 之外的所有对象都被视作 true
   	   # 登入并记住登录状态,然后重定向到用户的资料页面

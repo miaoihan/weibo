@@ -1,13 +1,10 @@
 "zh-CN":
-  user:
-    name: "用户名"
-    email: "邮箱"
-    password: "密码"
-    remember_me: 记住登陆状态
-    current_password: 旧密码
-  post:
-    title: 标题
-    content: 正文
+  users:
+      name: "用户名"
+      email: "邮箱"
+      password: "密码"
+      remember_me: 记住登陆状态
+      current_password: 旧密码
   date:
     abbr_day_names:
     - 周日

@@ -1,5 +1,5 @@
 <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id),
 			    html: { method: :delete },
 			    remote: true) do |f| %>  <!-- Ajax -->
-	<%= f.submit "取消关注", class: "btn push-right" %>
-<% end %>
+	<%= f.submit "取消关注", :data => { :"disable-with" => "请稍等..." }, class: "btn push-right" %>
+<% end %>	

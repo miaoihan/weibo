@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many :followers, through: :passive_relationships, source: :follower       #  关注我的人                 
   attr_accessor :remember_token                                                                           #  记忆令牌
   before_save { self.email = email.downcase}				                            #将 email 转换为小写,确保邮件地址唯一
-  validates :name, presence: true,  length: { maximum: 50, minimum: 4 }	#存在性、不为空，长度限制
+  validates :name, presence: true,  length: { maximum: 50, minimum: 2 }	#存在性、不为空，长度限制
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i 	#正则表达式验证邮箱有效性
   validates :email, presence: true,  length: { maximum: 255 },
   				     format: { with: VALID_EMAIL_REGEX },
