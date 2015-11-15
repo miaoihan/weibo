@@ -3,7 +3,11 @@
 		<%= link_to "鲁克微博", root_path, id: "logo" %>
 		<nav>
 			<ul class="nav navbar-nav navbar-right">
+			<% if logged_in? %>
 				<li><%= link_to "发微博",	root_path %></li>
+			<% else %>
+				<li><%= link_to "主页",	root_path %></li>
+			<% end %>
 				<li><%= link_to "帮助",	help_path %></li>
 				<!-- 用户模块和非用户模块 -->
 				<% if logged_in? %>
@@ -19,8 +23,8 @@
 						</ul>
 					</li>
 				<% else %>
-				<li><%= link_to "注册微博",signup_path %></li>
-				<li><%= link_to "登陆", login_path %></li>
+					<li><%= link_to "注册微博",signup_path %></li>
+					<li><%= link_to "登陆", login_path %></li>
 				<% end %></ul>
 		</nav>
 	</div>
