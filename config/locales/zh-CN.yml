@@ -2,13 +2,17 @@
   activerecord:
     models:
       user: "用户"
+      micropost: "微博"
     attributes:
       user:
         name: "用户名"
         email: "邮箱"
         password: "密码"
+        password_confirmation: "确认密码"
         remember_me: 记住登陆状态
         current_password: 旧密码
+      micropost:
+        content: "内容"
   date:
     abbr_day_names:
     - 周日

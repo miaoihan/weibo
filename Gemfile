@@ -10,6 +10,7 @@ gem 'turbolinks'
 gem 'jbuilder', 					'~> 2.0'
 gem 'sdoc', 						'~> 0.4.0', group: :doc
 
+#bootstrap
 gem 'bootstrap-sass',			'3.2.0.0'
 #哈希密码摘要
 gem 'bcrypt',					'3.1.7'

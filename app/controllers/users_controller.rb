@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   def create
   	@user = User.new(user_params)		
 	if @user.save
-              log_in @user   #  注册后直接登陆
+    log_in @user   #  注册后直接登陆
 		flash[ :success] = "欢迎来到鲁克微博！"
 		redirect_to @user
 		#redirect_to user_url(@user)
